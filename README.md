@@ -1,4 +1,4 @@
-# Course from Udemy about Docker, Kubernetes and CI/CD.
+# Course about Docker, Kubernetes and CI/CD.
 
 ## Description and use-case
 
