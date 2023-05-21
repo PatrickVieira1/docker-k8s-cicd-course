@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t patrickvieira1/docker-k8s-cicd-course -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true patrickvieira1/docker-k8s-cicd-course npm run test
