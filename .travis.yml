@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true patrickvieira1/docker-k8s-cicd-course npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: "Docker-k8s-course"
+  env: "Docker-k8s-course-env"
+  bucket_name: "elasticbeanstalk-us-east-1-374015130602"
+  bucket_path: "Docker-k8s-course-env"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+  
