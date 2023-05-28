@@ -14,3 +14,13 @@ after_success:
   - docker build -t patrickvieira1/multi-nginx ./fibonacci/complex/nginx/
   - docker build -t patrickvieira1/multi-server ./fibonacci/complex/server/
   - docker build -t patrickvieira1/multi-worker ./fibonacci/complex/worker/
+  #Log in to the docker CLI
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  #Take those images and push them to Docker Hub
+
+  - docker push patrickvieira1/multi-client
+  - docker push patrickvieira1/multi-nginx
+  - docker push patrickvieira1/multi-server
+  - docker push patrickvieira1/multi-worker
