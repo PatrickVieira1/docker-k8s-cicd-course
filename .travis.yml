@@ -1,0 +1,16 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t patrickvieira1/react-test -f ./fibonacci/complex/client/Dockerfile.dev .
+
+script:
+  - docker run -e CI=true patrickvieira1/react-teste npm test -- --coverage
+
+after_success:
+  - docker build -t patrickvieira1/multi-client ./fibonacci/complex/client/
+  - docker build -t patrickvieira1/multi-nginx ./fibonacci/complex/nginx/
+  - docker build -t patrickvieira1/multi-server ./fibonacci/complex/server/
+  - docker build -t patrickvieira1/multi-worker ./fibonacci/complex/worker/
